@@ -1,4 +1,5 @@
 var inputX1 = document.querySelector('.inputX1');
+
 var inputY1 = document.querySelector('.inputY1');
 var inputX2 = document.querySelector('.inputX2');
 var inputY2 = document.querySelector('.inputY2');
@@ -8,9 +9,9 @@ var resultY = document.querySelector('.resultY');
 
 var btn = document.querySelector('.btn');
 
-var inputRook = document.getElementById('customRadio3');
-
-document.getElementById('btn').onclick = checkRadio;
+var rook = document.getElementById('customRadio3');
+var eleph = document.getElementById('customRadio4');
+document.getElementById('btn').onclick = getCheckedRadioButton;
 
 //вывод фигуры и координат
 // function checkRadio() {
@@ -30,12 +31,20 @@ document.getElementById('btn').onclick = checkRadio;
 //     }
 // }
 
-// функция ладьи
-function checkRadio() {
+function getCheckedRadioButton() {
     var figure1 = document.getElementsByName('customRadio');
     for (var i = 0; i < figure1.length; i++) {
-        if (figure1[i].checked === inputRook.checked) {
-                resultX.textContent = inputRook.value + ' с координатами: ' + 'x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
-            }
-        }
+        figure1[i].checked;
     }
+}
+function handlStatus() {
+
+}
+// (inputX1.value == inputX2.value || inputY1.value == inputY2.value)
+
+// function checkEleph() {
+//         else if ((figure1[i].checked === eleph.checked) && (Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value))) {
+//         resultX.textContent = eleph.value + ' с координатами: ' + 'x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
+//     } else {
+//         resultX.textContent = figure1[i].value + 'не бьёт';
+//     }
