@@ -11,7 +11,7 @@ var btn = document.querySelector('.btn');
 
 var rook = document.getElementById('customRadio3');
 var eleph = document.getElementById('customRadio4');
-document.getElementById('btn').onclick = getCheckedRadioButton;
+document.getElementById('btn').onclick = ;
 
 //вывод фигуры и координат
 // function checkRadio() {
@@ -37,10 +37,16 @@ function getCheckedRadioButton() {
         figure1[i].checked;
     }
 }
+
 function handlStatus() {
 
 }
-// (inputX1.value == inputX2.value || inputY1.value == inputY2.value)
+
+function isUnderRookHit() {
+    if (inputX1.value == inputX2.value || inputY1.value == inputY2.value) {
+        
+    }
+}
 
 // function checkEleph() {
 //         else if ((figure1[i].checked === eleph.checked) && (Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value))) {
