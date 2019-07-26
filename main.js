@@ -1,5 +1,4 @@
 var inputX1 = document.querySelector('.inputX1');
-
 var inputY1 = document.querySelector('.inputY1');
 var inputX2 = document.querySelector('.inputX2');
 var inputY2 = document.querySelector('.inputY2');
@@ -11,7 +10,7 @@ var btn = document.querySelector('.btn');
 
 var rook = document.getElementById('customRadio3');
 var eleph = document.getElementById('customRadio4');
-document.getElementById('btn').onclick = ;
+document.getElementById('btn').onclick = handlStatus;
 
 //вывод фигуры и координат
 // function checkRadio() {
@@ -30,27 +29,32 @@ document.getElementById('btn').onclick = ;
 //         }
 //     }
 // }
-
-function getCheckedRadioButton() {
+function getCheckedRadioButtonFigure1() {
     var figure1 = document.getElementsByName('customRadio');
     for (var i = 0; i < figure1.length; i++) {
         figure1[i].checked;
     }
 }
-
-function handlStatus() {
-
+function getCheckedRadioButtonFigure2() {
+    var figure2 = document.getElementsByName('customRadio1');
+    for (var i = 0; i < figure2.length; i++) {
+        figure2[i].checked;
+    }
 }
-
+function handlStatus() {
+    switch(figure1[i].checked) {
+        case 'isUnderRookHit':
+            resultX.textContent = rook.value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value + ' бьёт ' + rook.value + ': x = ' + inputX2.value + '; ' + 'y = ' + inputY2.value;
+            break;
+    }
+}
 function isUnderRookHit() {
-    if (inputX1.value == inputX2.value || inputY1.value == inputY2.value) {
+    if (figure1[i].checked == rook.value) && (inputX1.value == inputX2.value || inputY1.value == inputY2.value) {
         
     }
 }
+function isUnderElephHit() {
+    if ((Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value))) {
 
-// function checkEleph() {
-//         else if ((figure1[i].checked === eleph.checked) && (Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value))) {
-//         resultX.textContent = eleph.value + ' с координатами: ' + 'x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
-//     } else {
-//         resultX.textContent = figure1[i].value + 'не бьёт';
-//     }
+    }
+}
