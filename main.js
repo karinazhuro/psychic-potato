@@ -10,7 +10,7 @@ var btn = document.querySelector('.btn');
 
 var rook = document.getElementById('customRadio3');
 var eleph = document.getElementById('customRadio4');
-document.getElementById('btn').onclick = handlStatus;
+document.getElementById('btn').onclick = getCheckedRadioButtonFigure1;
 
 //вывод фигуры и координат
 // function checkRadio() {
@@ -29,7 +29,8 @@ document.getElementById('btn').onclick = handlStatus;
 //         }
 //     }
 // }
-function getCheckedRadioButtonFigure1() {
+
+function getCheckedRadioButtonFigure1() { //радиогруппу вложить в параметр
     var figure1 = document.getElementsByName('customRadio');
     for (var i = 0; i < figure1.length; i++) {
         figure1[i].checked;
@@ -41,20 +42,23 @@ function getCheckedRadioButtonFigure2() {
         figure2[i].checked;
     }
 }
-function handlStatus() {
-    switch(figure1[i].checked) {
-        case 'isUnderRookHit':
-            resultX.textContent = rook.value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value + ' бьёт ' + rook.value + ': x = ' + inputX2.value + '; ' + 'y = ' + inputY2.value;
-            break;
-    }
-}
+// function handlStatus() {
+//     switch  {
+//         case (figure1[i].checked == rook.checked):
+//             isUnderRookHit();
+//             break;
+//         case (figure1[i].checked == eleph.checked):
+//             isUnderElephHit();
+//             break;
+//     }
+// }
 function isUnderRookHit() {
-    if (figure1[i].checked == rook.value) && (inputX1.value == inputX2.value || inputY1.value == inputY2.value) {
-        
+    if (inputX1.value == inputX2.value || inputY1.value == inputY2.value) {
+        resultX.textContent = rook.value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
     }
 }
 function isUnderElephHit() {
     if ((Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value))) {
-
+        resultX.textContent = rook.value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
     }
 }
