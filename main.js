@@ -30,19 +30,14 @@ document.getElementById('btn').onclick = getCheckedRadioButtonFigure1;
 //     }
 // }
 
-function getCheckedRadioButtonFigure1() { //радиогруппу вложить в параметр
+function getCheckedRadioButtonFigure1() {   //радиогруппы customRadio и customRadio1 вложить в параметр
     var figure1 = document.getElementsByName('customRadio');
     for (var i = 0; i < figure1.length; i++) {
         figure1[i].checked;
+        alert('yes');
     }
 }
-function getCheckedRadioButtonFigure2() {
-    var figure2 = document.getElementsByName('customRadio1');
-    for (var i = 0; i < figure2.length; i++) {
-        figure2[i].checked;
-    }
-}
-// function handlStatus() {
++// function handlStatus() {
 //     switch  {
 //         case (figure1[i].checked == rook.checked):
 //             isUnderRookHit();
