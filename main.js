@@ -1,59 +1,60 @@
-var inputX1 = document.querySelector('.inputX1');
-var inputY1 = document.querySelector('.inputY1');
-var inputX2 = document.querySelector('.inputX2');
-var inputY2 = document.querySelector('.inputY2');
+const inputX1 = document.querySelector('.inputX1');
+const inputY1 = document.querySelector('.inputY1');
+const inputX2 = document.querySelector('.inputX2');
+const inputY2 = document.querySelector('.inputY2');
 
-var resultX = document.querySelector('.resultX');
-var resultY = document.querySelector('.resultY');
+const resultX = document.querySelector('.resultX');
+const resultY = document.querySelector('.resultY');
 
-var btn = document.querySelector('.btn');
+const btn = document.querySelector('.btn');
 
-var rook = document.getElementById('customRadio3');
-var eleph = document.getElementById('customRadio4');
-document.getElementById('btn').onclick = getCheckedRadioButtonFigure1;
+const rook = document.getElementById('customRadio3');   //получение фигур по id
+const eleph = document.getElementById('customRadio4');
 
-//вывод фигуры и координат
-// function checkRadio() {
-//     var figure1 = document.getElementsByName('customRadio');
-//     for (var i = 0; i < figure1.length; i++) {
-//         if (figure1[i].checked) {
-//             resultX.textContent = figure1[i].value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
-//             break;
-//         }
-//     }
-//     var figure2 = document.getElementsByName('customRadio1');
-//     for (var i = 0; i < figure2.length; i++) {
-//         if (figure2[i].checked) {
-//             resultY.textContent = figure2[i].value + ': x = ' + inputX2.value + '; ' + 'y = ' + inputY2.value;
-//             break;
-//         }
-//     }
-// }
+document.getElementById('btn').onclick = handlStatus;
 
-function getCheckedRadioButtonFigure1() {   //радиогруппы customRadio и customRadio1 вложить в параметр
-    var figure1 = document.getElementsByName('customRadio');
-    for (var i = 0; i < figure1.length; i++) {
+const chessmanRadioGroup1 = document.getElementsByName('customRadio');      //радиогруппа
+const chessmanRadioGroup2 = document.getElementsByName('customRadio1');     //радиогруппа
+
+function handlStatus() {
+    const chessmanX1 = inputX1.value;   //получение координат
+    const chessmanY1 = inputY1.value;
+    const chessmanChecked1 = getCheckedRadioButton(chessmanRadioGroup1);
+
+    const chessmanX2 = inputX2.value;
+    const chessmanY2 = inputY2.value;
+    const chessmanChecked2 = getCheckedRadioButton(chessmanRadioGroup2);
+
+    switch (chessmanRadioGroup1.value) {
+        case rook.value:
+            isUnderRookHit(4, 4, 2, 4);
+            break;
+        case eleph.value:
+            isUnderElephHit();
+            break;
+    }
+}
+
+function getCheckedRadioButton(radioGroup) {
+    for (let i = 0; i < figure1.length; i++) {
         figure1[i].checked;
-        alert('yes');
+        return figure1[i].checked;
     }
 }
-+// function handlStatus() {
-//     switch  {
-//         case (figure1[i].checked == rook.checked):
-//             isUnderRookHit();
-//             break;
-//         case (figure1[i].checked == eleph.checked):
-//             isUnderElephHit();
-//             break;
-//     }
-// }
-function isUnderRookHit() {
-    if (inputX1.value == inputX2.value || inputY1.value == inputY2.value) {
-        resultX.textContent = rook.value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
-    }
+
+function isUnderRookHit(rookX, rookY, checkedX, checkedY) {
+    if (inputX1.value == inputX2.value || inputY1.value == inputY2.value);
 }
+
 function isUnderElephHit() {
-    if ((Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value))) {
-        resultX.textContent = rook.value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
-    }
+    if ((Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value)));
 }
+
+function isUnderKinghHit() {
+    if () ;
+}
+
+function isUnderQueenHit() {
+    if ((inputX1.value == inputX2.value || inputY1.value == inputY2.value) || ((Math.abs(inputX1.value - inputX2.value)) == (Math.abs(inputY1.value - inputY2.value))));
+}
+//        resultX.textContent = rook.value + ': x = ' + inputX1.value + '; ' + 'y = ' + inputY1.value;
