@@ -48,68 +48,45 @@ function handlStatus() {
         alert('Заполните все поля формы');
         return;
     }
-// записать каждый switch в функцию и вызывать по одному 
-// или
-// написать функцию выбора какой параметр идёт в switch
-    let resultFigure1;
-    switch (chessmanChecked1.value) {
-        case king1.value:
-            resultFigure1 = isUnderKinghHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
-            break;
-        case queen1.value:
-            resultFigure1 = isUnderQueenHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
-            break;
-        case rook1.value:
-            resultFigure1 = isUnderRookHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
-            break;
-        case eleph1.value:
-            resultFigure1 = isUnderElephHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
-            break;
-        case horse1.value:
-            resultFigure1 = isUnderHorseHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
-            break;
-        case pawn1.value:
-            resultFigure1 = isUnderPawnHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
-            break;
-        default:
-            alert('упс, что-то не так');
-    }
-    if (resultFigure1 == true) {
+    if (getResult(chessmanChecked1.value, chessmanX1, chessmanY1, chessmanX2, chessmanY2)) {
         resultX.textContent = `Фигура 1 бьёт Фигуру 2`;
     } else {
-        resultX.textContent = `Фигура 1 не бьёт Фигуру 2`;
+        resultX.textContent = `Фигура 2 не бьёт Фигуру 1`;
     }
-
-    let resultFigure2;
-    switch (chessmanChecked2.value) {
-        case king2.value:
-            resultFigure2 = isUnderKinghHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
-            break;
-        case queen2.value:
-            resultFigure2 = isUnderQueenHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
-            break;
-        case rook2.value:
-            resultFigure2 = isUnderRookHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
-            break;
-        case eleph2.value:
-            resultFigure2 = isUnderElephHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
-            break;
-        case horse2.value:
-            resultFigure2 = isUnderHorseHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
-            break;
-        case pawn2.value:
-            resultFigure2 = isUnderPawnHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
-            break;
-        default:
-            alert('упс, что-то не так');
-    }
-    if (resultFigure2 == true) {
+    
+    if (getResult(chessmanChecked2.value, chessmanX2, chessmanY2, chessmanX1, chessmanY1)) {
         resultY.textContent = `Фигура 2 бьёт Фигуру 1`;
     } else {
         resultY.textContent = `Фигура 2 не бьёт Фигуру 1`;
     }
 }
 
+function getResult(figureType, chessmanX1, chessmanY1, chessmanX2, chessmanY2) {
+    let result = null;
+    switch (figureType) {
+        case king1.value:
+            result = isUnderKinghHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
+            break;
+        case queen1.value:
+            result = isUnderQueenHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
+            break;
+        case rook1.value:
+            result = isUnderRookHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
+            break;
+        case eleph1.value:
+            result = isUnderElephHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
+            break;
+        case horse1.value:
+            result = isUnderHorseHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
+            break;
+        case pawn1.value:
+            result = isUnderPawnHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
+            break;
+        default:
+            alert('упс, что-то не так');
+    }
+    return result;
+}
 // проверка на валидность координат
 function isValidInput(text1, text2, text3, text4, button1, button2) {
     return text1 !== ''
