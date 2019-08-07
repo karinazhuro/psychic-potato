@@ -45,10 +45,12 @@ function handlStatus() {
     const chessmanChecked2 = getCheckedRadioButton(chessmanRadioGroup2);
 
     if (!isValidInput(chessmanX1, chessmanY1, chessmanX2, chessmanY2, chessmanChecked1, chessmanChecked2)) {
-        alert('Форма заполнена не правильно');
+        alert('Заполните все поля формы');
         return;
     }
-
+// записать каждый switch в функцию и вызывать по одному 
+// или
+// написать функцию выбора какой параметр идёт в switch
     let resultFigure1;
     switch (chessmanChecked1.value) {
         case king1.value:
