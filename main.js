@@ -36,12 +36,12 @@ const chessmanRadioGroup2 = document.getElementsByName('customRadio1');
 
 function handlStatus() {
     //получение координат
-    const chessmanX1 = inputX1.value;
-    const chessmanY1 = inputY1.value;
+    const chessmanX1 = Number(inputX1.value);
+    const chessmanY1 = Number(inputY1.value);
     const chessmanChecked1 = getCheckedRadioButton(chessmanRadioGroup1);
 
-    const chessmanX2 = inputX2.value;
-    const chessmanY2 = inputY2.value;
+    const chessmanX2 = Number(inputX2.value);
+    const chessmanY2 = Number(inputY2.value);
     const chessmanChecked2 = getCheckedRadioButton(chessmanRadioGroup2);
 
     if (!isValidInput(chessmanX1, chessmanY1, chessmanX2, chessmanY2, chessmanChecked1, chessmanChecked2)) {
@@ -77,35 +77,35 @@ function handlStatus() {
     } else {
         resultX.textContent = `Фигура 1 не бьёт Фигуру 2`;
     }
-// chessmanY1, chessmanY2, chessmanX1, chessmanX2
-    // let resultFigure2;
-    // switch (chessmanChecked2.value) {
-    //     case king2.value:
-    //         resultFigure2 = isUnderKinghHit(chessmanX1, chessmanX2, chessmanY1, chessmanY2);
-    //         break;
-    //     case queen2.value:
-    //         resultFigure2 = isUnderQueenHit(chessmanY1, chessmanY2, chessmanX1, chessmanX2);
-    //         break;
-    //     case rook2.value:
-    //         resultFigure2 = isUnderRookHit(chessmanY1, chessmanY2, chessmanX1, chessmanX2);
-    //         break;
-    //     case eleph2.value:
-    //         resultFigure2 = isUnderElephHit(chessmanY1, chessmanY2, chessmanX1, chessmanX2);
-    //         break;
-    //     case horse2.value:
-    //         resultFigure2 = isUnderHorseHit(chessmanY1, chessmanY2, chessmanX1, chessmanX2);
-    //         break;
-    //     case pawn2.value:
-    //         resultFigure2 = isUnderPawnHit(chessmanY1, chessmanY2, chessmanX1, chessmanX2);
-    //         break;
-    //     default:
-    //         alert('упс, что-то не так');
-    // }
-    // if (resultFigure2 == true) {
-    //     resultY.textContent = `Фигура 2 бьёт Фигуру 1`;
-    // } else {
-    //     resultY.textContent = `Фигура 2 не бьёт Фигуру 1`;
-    // }
+
+    let resultFigure2;
+    switch (chessmanChecked2.value) {
+        case king2.value:
+            resultFigure2 = isUnderKinghHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
+            break;
+        case queen2.value:
+            resultFigure2 = isUnderQueenHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
+            break;
+        case rook2.value:
+            resultFigure2 = isUnderRookHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
+            break;
+        case eleph2.value:
+            resultFigure2 = isUnderElephHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
+            break;
+        case horse2.value:
+            resultFigure2 = isUnderHorseHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
+            break;
+        case pawn2.value:
+            resultFigure2 = isUnderPawnHit(chessmanX2, chessmanX1, chessmanY2, chessmanY1);
+            break;
+        default:
+            alert('упс, что-то не так');
+    }
+    if (resultFigure2 == true) {
+        resultY.textContent = `Фигура 2 бьёт Фигуру 1`;
+    } else {
+        resultY.textContent = `Фигура 2 не бьёт Фигуру 1`;
+    }
 }
 
 // проверка на валидность координат
@@ -129,13 +129,14 @@ function getCheckedRadioButton(radioGroup) {
 }
 
 function isUnderKinghHit(coorX1, coorX2, coorY1, coorY2) {
-    let status = ((coorX1 == coorX2 - 1) && (coorY1 == coorY2))
-        || ((coorX1 == coorX2 - 1) && (coorY1 == coorY2 - 1))   //
-        || ((coorX1 == coorX2) && (coorY1 == coorY2 - 1))
-        || ((coorX1 == coorX2 + 1) && (coorY1 == coorY2 - 1))
+    let status = ((coorX1 == coorX2) && (coorY1 == coorY2 - 1))
         || ((coorX1 == coorX2) && (coorY1 == coorY2 + 1))
         || ((coorX1 == coorX2 + 1) && (coorY1 == coorY2))
-        || ((coorX1 == coorX2 + 1) && (coorY1 == coorY2 - 1));
+        || ((coorX1 == coorX2 - 1) && (coorY1 == coorY2))
+        || ((coorX1 == coorX2 + 1) && (coorY1 == coorY2 - 1))
+        || ((coorX1 == coorX2 - 1) && (coorY1 == coorY2 - 1))
+        || ((coorX1 == coorX2 + 1) && (coorY1 == coorY2 + 1))
+        || ((coorX1 == coorX2 - 1) && (coorY1 == coorY2 + 1));
     return status;
 }
 
